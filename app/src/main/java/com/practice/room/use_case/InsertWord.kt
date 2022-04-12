@@ -9,13 +9,13 @@ class InsertWord(
 ) {
 
     @Throws(InvalidWordException::class)
-    suspend operator fun invoke(word: Word){
-        if (word.word.isBlank()){
+    suspend operator fun invoke(word: String, content: String) {
+        if (word.isBlank()) {
             throw InvalidWordException("單字不可為空")
         }
-        if(word.content.isBlank()){
+        if (content.isBlank()) {
             throw InvalidWordException("單字內容不可為空")
         }
-        repository.insertWord(word)
+        repository.insertWord(Word(0, word, content))
     }
 }
