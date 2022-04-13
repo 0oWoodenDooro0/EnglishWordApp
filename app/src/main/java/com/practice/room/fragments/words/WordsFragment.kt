@@ -21,13 +21,15 @@ class WordsFragment : Fragment() {
     private lateinit var binding: FragmentWordsBinding
     private lateinit var linearLayoutManager: LinearLayoutManager
     private val viewModel : WordsViewModel by viewModels()
-    private val adapter = RecyclerViewAdapter()
+    private lateinit var adapter : RecyclerViewAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentWordsBinding.inflate(inflater, container, false)
+
+        adapter = RecyclerViewAdapter(viewModel)
 
         binding.wordsFloatingButton.setOnClickListener {
             findNavController().navigate(R.id.action_wordsFragment_to_insertWordFragment)
