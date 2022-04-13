@@ -2,7 +2,6 @@
     <string name="app_name">英文單字</string>
     <string name="activity_floating_button_description">Insert Word</string>
     <string name="fragment_floating_button_description">Check</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Insert</string>
     <string name="word_edit_text_hint">單字</string>
     <string name="content_edit_text_hint">內容</string>
