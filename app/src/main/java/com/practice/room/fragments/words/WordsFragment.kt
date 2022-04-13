@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.practice.room.R
@@ -19,7 +20,7 @@ class WordsFragment : Fragment() {
 
     private lateinit var binding: FragmentWordsBinding
     private lateinit var linearLayoutManager: LinearLayoutManager
-    private lateinit var wordsViewModel: WordsViewModel
+    private val viewModel : WordsViewModel by viewModels()
     private val adapter = RecyclerViewAdapter()
 
     override fun onCreateView(
@@ -32,7 +33,7 @@ class WordsFragment : Fragment() {
             findNavController().navigate(R.id.action_wordsFragment_to_insertWordFragment)
         }
 
-        wordsViewModel.words.observe(viewLifecycleOwner) {
+        viewModel.words.observe(viewLifecycleOwner) {
             adapter.update(it)
         }
 

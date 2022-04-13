@@ -3,6 +3,7 @@ package com.practice.room
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.practice.room.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -18,12 +19,12 @@ class MainActivity : AppCompatActivity(){
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setupActionBarWithNavController(findNavController(binding.fragmentNavController.id))
+        setupActionBarWithNavController(supportFragmentManager.findFragmentById(binding.fragmentNavController.id)!!.findNavController())
 
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(binding.fragmentNavController.id)
+        val navController = supportFragmentManager.findFragmentById(binding.fragmentNavController.id)!!.findNavController()
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
 }

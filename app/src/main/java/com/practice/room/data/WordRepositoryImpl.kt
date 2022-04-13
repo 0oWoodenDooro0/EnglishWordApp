@@ -1,12 +1,13 @@
 package com.practice.room.data
 
+import androidx.lifecycle.LiveData
 import kotlinx.coroutines.flow.Flow
 
 class WordRepositoryImpl(
     private val dao: WordDao
 ) : WordRepository {
 
-    override fun getWords(): Flow<List<Word>> {
+    override fun getWords(): LiveData<List<Word>> {
         return dao.getAllData()
     }
 
