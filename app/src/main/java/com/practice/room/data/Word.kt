@@ -11,5 +11,3 @@ data class Word(
     val word: String,
     val content: String
 )
-
-class InvalidWordException(message: String) : Exception(message)

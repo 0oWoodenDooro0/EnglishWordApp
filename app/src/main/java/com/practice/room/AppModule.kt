@@ -1,6 +1,7 @@
 package com.practice.room
 
 import android.app.Application
+import android.content.Context
 import androidx.room.Room
 import com.practice.room.data.WordDatabase
 import com.practice.room.data.WordRepository
@@ -12,6 +13,7 @@ import com.practice.room.use_case.WordUseCases
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
@@ -38,10 +40,10 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideWOrdUseCases(repository: WordRepository): WordUseCases {
+    fun provideWOrdUseCases(repository: WordRepository, @ApplicationContext context: Context): WordUseCases {
         return WordUseCases(
             getWords = GetWords(repository),
-            insertWord = InsertWord(repository),
+            insertWord = InsertWord(repository, context),
             deleteWord = DeleteWord(repository)
         )
     }

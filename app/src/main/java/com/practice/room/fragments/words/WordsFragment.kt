@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.practice.room.R
 import com.practice.room.RecyclerViewAdapter
 import com.practice.room.WordsViewModel
-import com.practice.room.data.Word
 import com.practice.room.databinding.FragmentWordsBinding
 import dagger.hilt.android.AndroidEntryPoint
 
