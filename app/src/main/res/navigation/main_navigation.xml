@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_wordsFragment_to_insertWordFragment"
             app:destination="@id/insertWordFragment" />
+        <action
+            android:id="@+id/action_wordsFragment_to_randomWordFragment"
+            app:destination="@id/randomWordFragment" />
     </fragment>
     <fragment
         android:id="@+id/insertWordFragment"
@@ -21,6 +24,15 @@
         tools:layout="@layout/fragment_insert_word" >
         <action
             android:id="@+id/action_insertWordFragment_to_wordsFragment"
+            app:destination="@id/wordsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/randomWordFragment"
+        android:name="com.practice.room.fragments.random.RandomWordFragment"
+        android:label="Random Word"
+        tools:layout="@layout/fragment_random_word" >
+        <action
+            android:id="@+id/action_randomWordFragment_to_wordsFragment"
             app:destination="@id/wordsFragment" />
     </fragment>
 </navigation>

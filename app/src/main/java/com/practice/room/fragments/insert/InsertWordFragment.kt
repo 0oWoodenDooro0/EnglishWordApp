@@ -16,7 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class InsertWordFragment : Fragment() {
 
-    private val viewModel : WordsViewModel by viewModels()
+    private val viewModel: WordsViewModel by viewModels()
     private lateinit var binding: FragmentInsertWordBinding
 
     override fun onCreateView(

@@ -19,8 +19,8 @@ class WordsFragment : Fragment() {
 
     private lateinit var binding: FragmentWordsBinding
     private lateinit var linearLayoutManager: LinearLayoutManager
-    private val viewModel : WordsViewModel by viewModels()
-    private lateinit var adapter : RecyclerViewAdapter
+    private val viewModel: WordsViewModel by viewModels()
+    private lateinit var adapter: RecyclerViewAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
