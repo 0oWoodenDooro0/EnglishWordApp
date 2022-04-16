@@ -11,7 +11,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/fragment_nav_controller"/>
+        app:layout_constraintBottom_toTopOf="@+id/fragment_nav_controller"
+        app:menu="@menu/toolbar_menu"/>
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_nav_controller"
