@@ -38,11 +38,11 @@ class WordsViewModel @Inject constructor(
             is WordsEvent.ChangeFragment -> {
                 fragment.postValue(event.fragment)
             }
+            is WordsEvent.RandomWord -> {
+                randomWord.postValue(wordUseCases.randomWord(wordList.value))
+            }
             is WordsEvent.DeleteIconClick -> {
                 deleteVisible.postValue(deleteVisible.value?.not())
-            }
-            is WordsEvent.RandomWord -> {
-                randomWord.postValue(wordUseCases.randomWord(event.wordList))
             }
         }
     }

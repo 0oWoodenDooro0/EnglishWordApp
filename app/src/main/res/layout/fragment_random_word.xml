@@ -8,7 +8,7 @@
         android:id="@+id/word_card"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/content_visible"
+        app:layout_constraintBottom_toTopOf="@+id/next_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -17,9 +17,21 @@
             android:id="@+id/random_word"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:textSize="50sp" />
 
     </androidx.cardview.widget.CardView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/next_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/random_word_next_button"
+        app:layout_constraintBottom_toTopOf="@+id/content_card"
+        app:layout_constraintEnd_toStartOf="@+id/content_visible"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/word_card" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/content_visible"
@@ -40,13 +52,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/content_visible">
+        app:layout_constraintTop_toBottomOf="@+id/next_button">
 
         <TextView
             android:id="@+id/random_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:textSize="50sp"
             android:visibility="invisible" />
 
     </androidx.cardview.widget.CardView>

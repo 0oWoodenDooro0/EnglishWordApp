@@ -27,7 +27,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     private val viewModel: WordsViewModel by viewModels()
     private var _menu: Menu? = null
-    private lateinit var list: List<Word>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,10 +49,8 @@ class MainActivity : AppCompatActivity() {
                     viewModel.onEvent(WordsEvent.ChangeFragment(FragmentChange.insertWordFragment))
                 }
                 R.id.randomWordFragment -> {
-                    viewModel.wordList.observeOnce{
-                        viewModel.onEvent(WordsEvent.RandomWord(it))
-                        viewModel.onEvent(WordsEvent.ChangeFragment(FragmentChange.randomWordFragment))
-                    }
+                    viewModel.onEvent(WordsEvent.RandomWord)
+                    viewModel.onEvent(WordsEvent.ChangeFragment(FragmentChange.randomWordFragment))
                 }
             }
         }
