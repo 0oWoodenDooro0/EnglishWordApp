@@ -6,10 +6,7 @@ import androidx.room.Room
 import com.practice.room.data.WordDatabase
 import com.practice.room.data.WordRepository
 import com.practice.room.data.WordRepositoryImpl
-import com.practice.room.use_case.DeleteWord
-import com.practice.room.use_case.GetWords
-import com.practice.room.use_case.InsertWord
-import com.practice.room.use_case.WordUseCases
+import com.practice.room.use_case.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -40,11 +37,15 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideWOrdUseCases(repository: WordRepository, @ApplicationContext context: Context): WordUseCases {
+    fun provideWOrdUseCases(
+        repository: WordRepository,
+        @ApplicationContext context: Context
+    ): WordUseCases {
         return WordUseCases(
             getWords = GetWords(repository),
             insertWord = InsertWord(repository, context),
-            deleteWord = DeleteWord(repository)
+            deleteWord = DeleteWord(repository),
+            randomWord = RandomWord()
         )
     }
 }

@@ -1,9 +1,12 @@
 package com.practice.room
 
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
@@ -11,8 +14,10 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupWithNavController
 import com.practice.room.data.FragmentChange
+import com.practice.room.data.Word
 import com.practice.room.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.*
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -22,6 +27,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     private val viewModel: WordsViewModel by viewModels()
     private var _menu: Menu? = null
+    private lateinit var list: List<Word>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,13 +44,16 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.wordsFragment -> {
-                    viewModel.onEvent(WordsEvent.FragmentChange(FragmentChange.wordsFragment))
+                    viewModel.onEvent(WordsEvent.ChangeFragment(FragmentChange.wordsFragment))
                 }
                 R.id.insertWordFragment -> {
-                    viewModel.onEvent(WordsEvent.FragmentChange(FragmentChange.insertWordFragment))
+                    viewModel.onEvent(WordsEvent.ChangeFragment(FragmentChange.insertWordFragment))
                 }
                 R.id.randomWordFragment -> {
-                    viewModel.onEvent(WordsEvent.FragmentChange(FragmentChange.randomWordFragment))
+                    viewModel.wordList.observeOnce{
+                        viewModel.onEvent(WordsEvent.RandomWord(it))
+                        viewModel.onEvent(WordsEvent.ChangeFragment(FragmentChange.randomWordFragment))
+                    }
                 }
             }
         }
@@ -89,7 +98,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        if (navController.currentDestination?.id == R.id.wordsFragment){
+        if (navController.currentDestination?.id == R.id.wordsFragment) {
             return
         }
         super.onBackPressed()

@@ -1,7 +1,6 @@
 package com.practice.room.data
 
 import androidx.lifecycle.LiveData
-import kotlinx.coroutines.flow.Flow
 
 class WordRepositoryImpl(
     private val dao: WordDao

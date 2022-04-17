@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.practice.room.R
@@ -16,7 +17,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class InsertWordFragment : Fragment() {
 
-    private val viewModel: WordsViewModel by viewModels()
+    private val viewModel: WordsViewModel by activityViewModels()
     private lateinit var binding: FragmentInsertWordBinding
 
     override fun onCreateView(
