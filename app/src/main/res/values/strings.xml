@@ -5,7 +5,7 @@
     <string name="hello_blank_fragment">Insert</string>
     <string name="word_edit_text_hint">單字</string>
     <string name="content_edit_text_hint">內容</string>
-    <string name="menu_delete_title">刪除</string>
+    <string name="menu_insert_title">新增</string>
     <string name="menu_random_title">隨機抽取</string>
     <string name="random_word_next_button"><![CDATA[Next>]]></string>
 </resources>

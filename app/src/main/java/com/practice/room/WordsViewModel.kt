@@ -1,6 +1,5 @@
 package com.practice.room
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -20,7 +19,6 @@ class WordsViewModel @Inject constructor(
 
     val wordList: LiveData<List<Word>> = wordUseCases.getWords()
     val fragment: MutableLiveData<FragmentChange> = MutableLiveData(FragmentChange.wordsFragment)
-    val deleteVisible: MutableLiveData<Boolean> = MutableLiveData(false)
     val randomWord: MutableLiveData<Word> = MutableLiveData(null)
 
     fun onEvent(event: WordsEvent) {
@@ -40,9 +38,6 @@ class WordsViewModel @Inject constructor(
             }
             is WordsEvent.RandomWord -> {
                 randomWord.postValue(wordUseCases.randomWord(wordList.value))
-            }
-            is WordsEvent.DeleteIconClick -> {
-                deleteVisible.postValue(deleteVisible.value?.not())
             }
         }
     }

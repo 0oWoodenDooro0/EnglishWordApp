@@ -1,12 +1,9 @@
 package com.practice.room
 
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
@@ -14,10 +11,8 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupWithNavController
 import com.practice.room.data.FragmentChange
-import com.practice.room.data.Word
 import com.practice.room.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
-import java.util.*
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -60,11 +55,11 @@ class MainActivity : AppCompatActivity() {
                 when (fragment) {
                     FragmentChange.wordsFragment -> {
                         menu.findItem(R.id.random).isVisible = true
-                        menu.findItem(R.id.delete).isVisible = true
+                        menu.findItem(R.id.insert).isVisible = true
                     }
                     else -> {
                         menu.findItem(R.id.random).isVisible = false
-                        menu.findItem(R.id.delete).isVisible = false
+                        menu.findItem(R.id.insert).isVisible = false
                     }
                 }
             }
@@ -75,6 +70,10 @@ class MainActivity : AppCompatActivity() {
                 R.id.random -> {
                     navHostFragment.findNavController()
                         .navigate(R.id.action_wordsFragment_to_randomWordFragment)
+                }
+                R.id.insert -> {
+                    navHostFragment.findNavController()
+                        .navigate(R.id.action_wordsFragment_to_insertWordFragment)
                 }
             }
             false

@@ -8,5 +8,4 @@ sealed class WordsEvent {
     data class DeleteWord(val word: Word) : WordsEvent()
     data class ChangeFragment(val fragment: FragmentChange) : WordsEvent()
     object RandomWord : WordsEvent()
-    object DeleteIconClick : WordsEvent()
 }

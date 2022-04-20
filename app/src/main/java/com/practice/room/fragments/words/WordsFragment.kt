@@ -1,18 +1,13 @@
 package com.practice.room.fragments.words
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.practice.room.R
 import com.practice.room.RecyclerViewAdapter
-import com.practice.room.WordsEvent
 import com.practice.room.WordsViewModel
 import com.practice.room.databinding.FragmentWordsBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,10 +27,6 @@ class WordsFragment : Fragment() {
         binding = FragmentWordsBinding.inflate(inflater, container, false)
 
         adapter = RecyclerViewAdapter(viewModel)
-
-        binding.wordsFloatingButton.setOnClickListener {
-            findNavController().navigate(R.id.action_wordsFragment_to_insertWordFragment)
-        }
 
         viewModel.wordList.observe(viewLifecycleOwner) {
             adapter.update(it)
